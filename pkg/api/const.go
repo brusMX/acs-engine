@@ -126,6 +126,8 @@ const (
 	DefaultSecureKubeletEnabled = true
 	// DefaultMetricsServerAddonEnabled determines the acs-engine provided default for enabling kubernetes metrics-server addon
 	DefaultMetricsServerAddonEnabled = false
+	// DefaultAzureK8sMetricsAdapterAddonEnabled determines the acs-engine provided default for enabling Azure k8s metrics adapter addon
+	DefaultAzureK8sMetricsAdapterAddonEnabled = false
 	// DefaultNVIDIADevicePluginAddonEnabled determines the acs-engine provided default for enabling NVIDIA Device Plugin
 	DefaultNVIDIADevicePluginAddonEnabled = false
 	// DefaultContainerMonitoringAddonEnabled determines the acs-engine provided default for enabling kubernetes container monitoring addon
@@ -152,6 +154,8 @@ const (
 	DefaultReschedulerAddonName = "rescheduler"
 	// DefaultMetricsServerAddonName is the name of the kubernetes metrics server addon deployment
 	DefaultMetricsServerAddonName = "metrics-server"
+	// DefaultAzureK8sMetricsAdapterAddonName is the name of the Azure k8s metrics adapter addon deployment
+	DefaultAzureK8sMetricsAdapterAddonName = "azure-k8s-metrics-adapter"
 	// NVIDIADevicePluginAddonName is the name of the NVIDIA device plugin addon deployment
 	NVIDIADevicePluginAddonName = "nvidia-device-plugin"
 	// ContainerMonitoringAddonName is the name of the kubernetes Container Monitoring addon deployment

@@ -145,6 +145,15 @@ func setAddonsConfig(cs *api.ContainerService) {
 		},
 	}
 
+	defaultAzureK8sMetricsAdapterAddonsConfig := api.KubernetesAddon{
+		Name:    DefaultAzureK8sMetricsAdapterAddonName,
+		Enabled: helpers.PointerToBool(api.DefaultAzureK8sMetricsAdapterEnabled),
+		Containers: []api.KubernetesContainerSpec{
+			{
+				Name: DefaultAzureK8sMetricsAdapterAddonName,
+			},
+		},
+	}
 	defaultNVIDIADevicePluginAddonsConfig := api.KubernetesAddon{
 		Name:    NVIDIADevicePluginAddonName,
 		Enabled: helpers.PointerToBool(api.IsNSeriesSKU(cs.Properties) && common.IsKubernetesVersionGe(o.OrchestratorVersion, "1.10.0")),
@@ -209,6 +218,7 @@ func setAddonsConfig(cs *api.ContainerService) {
 		defaultDashboardAddonsConfig,
 		defaultReschedulerAddonsConfig,
 		defaultMetricsServerAddonsConfig,
+		defaultAzureK8sMetricsAdapterAddonsConfig,
 		defaultNVIDIADevicePluginAddonsConfig,
 		defaultContainerMonitoringAddonsConfig,
 		defaultAzureCNINetworkMonitorAddonsConfig,
