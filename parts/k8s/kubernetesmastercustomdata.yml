@@ -335,6 +335,10 @@ MASTER_ARTIFACTS_CONFIG_PLACEHOLDER
     sed -i "s|<kubernetesMetricsServerSpec>|{{WrapAsParameter "kubernetesMetricsServerSpec"}}|g" "/etc/kubernetes/addons/kube-metrics-server-deployment.yaml"
 {{end}}
 
+{{if .OrchestratorProfile.IsAzureK8sMetricsAdapterEnabled}}
+    sed -i "s|<kubernetesAzureK8sMetricsAdapterSpec>|{{WrapAsParameter "kubernetesAzureK8sMetricsAdapterSpec"}}|g" "/etc/kubernetes/addons/azure-k8s-metrics-adapter-deployment.yaml"
+{{end}}
+
 {{if IsNVIDIADevicePluginEnabled}}
     sed -i "s|<kubernetesNVIDIADevicePluginSpec>|{{WrapAsParameter "kubernetesNVIDIADevicePluginSpec"}}|g" "/etc/kubernetes/addons/nvidia-device-plugin.yaml"
     sed -i "s|<kubernetesNVIDIADevicePluginCPURequests>|{{WrapAsParameter "kubernetesNVIDIADevicePluginCPURequests"}}|g" "/etc/kubernetes/addons/nvidia-device-plugin.yaml"
