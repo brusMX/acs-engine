@@ -956,6 +956,12 @@ func (o *OrchestratorProfile) IsMetricsServerEnabled() bool {
 		common.IsKubernetesVersionGe(o.OrchestratorVersion, "1.9.0"))
 }
 
+// IsAzureK8sMetricsAdapterEnabled checks if the Azure K8s metrics adapter addon is enabled
+func (o *OrchestratorProfile) IsAzureK8sMetricsAdapterEnabled() bool {
+	return o.KubernetesConfig.isAddonEnabled(DefaultAzureK8sMetricsAdapterAddonName,
+		common.IsKubernetesVersionGe(o.OrchestratorVersion, "1.10.0"))
+}
+
 // IsContainerMonitoringEnabled checks if the container monitoring addon is enabled
 func (k *KubernetesConfig) IsContainerMonitoringEnabled() bool {
 	return k.isAddonEnabled(ContainerMonitoringAddonName, DefaultContainerMonitoringAddonEnabled)

@@ -179,6 +179,14 @@ func kubernetesAddonSettingsInit(profile *api.Properties) []kubernetesAddonSetti
 		},
 		{
 			kubernetesFeatureSetting{
+				"kubernetesmasteraddons-azure-k8s-metrics-adapter-deployment.yaml",
+				"azure-k8s-metrics-adapter-deployment.yaml",
+				profile.OrchestratorProfile.KubernetesConfig.IsACIConnectorEnabled(),
+			},
+			profile.OrchestratorProfile.KubernetesConfig.GetAddonScript(DefaultAzureK8sMetricsAdapterAddonName),
+		},
+		{
+			kubernetesFeatureSetting{
 				"kubernetesmasteraddons-omsagent-daemonset.yaml",
 				"omsagent-daemonset.yaml",
 				profile.OrchestratorProfile.KubernetesConfig.IsContainerMonitoringEnabled(),

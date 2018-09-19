@@ -180,6 +180,17 @@ func assignKubernetesParameters(properties *api.Properties, parametersMap params
 					}
 				}
 			}
+			if properties.OrchestratorProfile.IsAzureK8sMetricsAdapterEnabled() {
+				azureK8sMetricsAdapterAddon := getAddonByName(properties.OrchestratorProfile.KubernetesConfig.Addons, DefaultAzureK8sMetricsAdapterAddonName)
+				c = getAddonContainersIndexByName(azureK8sMetricsAdapterAddon.Containers, DefaultAzureK8sMetricsAdapterAddonName)
+				if c > -1 {
+					if azureK8sMetricsAdapterAddon.Containers[c].Image != "" {
+						addValue(parametersMap, "kubernetesAzureK8sMetricsAdapterSpec", azureK8sMetricsAdapterAddon.Containers[c].Image)
+					} else {
+						addValue(parametersMap, "kubernetesAzureK8sMetricsAdapterSpec", cloudSpecConfig.KubernetesSpecConfig.KubernetesImageBase+KubeConfigs[k8sVersion][DefaultAzureK8sMetricsAdapterAddonName])
+					}
+				}
+			}
 			if properties.IsNVIDIADevicePluginEnabled() {
 				nvidiaDevicePluginAddon := getAddonByName(properties.OrchestratorProfile.KubernetesConfig.Addons, NVIDIADevicePluginAddonName)
 				c := getAddonContainersIndexByName(nvidiaDevicePluginAddon.Containers, NVIDIADevicePluginAddonName)
